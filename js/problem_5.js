@@ -15,16 +15,16 @@ function getRhymes(rel_rhy, callback) {
 
 // Write your code here
 function displayList(data){
-    if(data==[]){
+    if(data.length==0){
+        rhymesOutput.innerText='no rhymes'
+    }
+    else{
         for(ele of data){
             let liElement = document.createElement('li');
             liElement.classList.add('list-group-item')
             liElement.innerText=ele['word'];
             rhymesOutput.append(liElement)
         }
-    }
-    else{
-        rhymesOutput.innerText='no rhymes'
     }
 }
 
@@ -36,9 +36,9 @@ showRhymesButton.addEventListener('click',()=>{
 })
 
 clearButton.addEventListener('click', ()=>{
+    wordInput.value = ''
     while (rhymesOutput.firstChild) {
         rhymesOutput.removeChild(rhymesOutput.lastChild);
     }
-    wordInput.innerText = ''
 })
 
